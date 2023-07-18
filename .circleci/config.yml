@@ -87,5 +87,5 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - myjob1
-      - create_infrastructure
-      # - configure_infrastructure
+      # - create_infrastructure
+      - configure_infrastructure
