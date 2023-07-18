@@ -1,8 +1,8 @@
 ---
 # Remote Control Using Ansible
 - name: Remote Control Using Ansible
-  hosts: ubuntu
-  user: ubuntu
+  hosts: all
+  user: ec2-user
   become: true
   become_method: sudo
   become_user: root
