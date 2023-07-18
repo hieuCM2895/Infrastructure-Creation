@@ -46,7 +46,6 @@ commands:
           # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
           when: on_fail
           command: |
-            apt-get install awscli
             aws cloudformation delete-stack --stack-name myStack-aa06c76
 
 jobs:
@@ -81,6 +80,7 @@ jobs:
       # Fail the job intentionally to simulate an error.
       # Uncomment the line below if you want to fail the current step
       # - run: return 1
+      - destroy_environment
 
     # Exercise: Config and Deployment
   configure_infrastructure: 
