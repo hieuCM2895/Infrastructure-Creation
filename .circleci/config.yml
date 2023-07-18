@@ -63,10 +63,29 @@ jobs:
       # Uncomment the line below if you want to fail the current step
       # - run: return 1
 
+    # Exercise: Config and Deployment
+  configure_infrastructure: 
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: ["6f:ee:07:49:d7:18:1a:ce:44:39:7a:f6:85:51:c0:e7"] # You can get this ID in the section where you registered the SSH Key
+      - run:
+          name: Install Ansible
+          command: |
+            # install the dependencies needed for your playbook
+            apk add --update ansible 
+      - run:
+          name: Run Playbook and Configure server
+          command: |
+            ansible-playbook -i inventory.txt main.yml
+
 workflows:
   # Name the workflow "welcome"
   my_workflow:
     # Run the welcome/run job in its own container
     jobs:
       - myjob1
-      - create_infrastructure
+      # - create_infrastructure
+      - configure_infrastructure
