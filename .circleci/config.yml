@@ -108,14 +108,8 @@ jobs:
       - run:
           name: smoke test
           command: |
-            URL="https://blog.udacity.com/"
-            # Test if website exists
-            if curl -s --head ${URL} 
-            then
-              return 0
-            else
-              return 1
-            fi
+            return 1 
+      - destroy_environment
 
 workflows:
   # Name the workflow "welcome"
@@ -123,6 +117,6 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - myjob1
-      # - create_infrastructure
+      - create_infrastructure
       # - configure_infrastructure
       - smoke_test
