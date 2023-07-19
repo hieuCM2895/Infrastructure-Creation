@@ -9,6 +9,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub "${MyBucketName}"
+      AccessControl: PublicRead
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
